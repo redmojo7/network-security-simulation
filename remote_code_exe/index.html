@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ping Device</title>
+  </head>
+  <body>
+    <h1>Ping Device</h1>
+    <form>
+      <label for="target">Enter a device IP or hostname:</label>
+      <input type="text" id="target" name="target">
+      <button type="submit">Ping</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const target = document.querySelector('#target').value;
+        fetch(`/execute?cmd=ping&target=${encodeURIComponent(target)}`)
+       .then(response => response.text())
+       .then((output) => {
+            document.querySelector('#output').innerHTML = output;
+          });
+      });
+    </script>
+  </body>
+</html>
