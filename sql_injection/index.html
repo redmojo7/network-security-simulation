@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vulnerable Web Server</title>
+</head>
+<body>
+  <h1>Vulnerable Web Server</h1>
+  <form action="/users" method="get">
+    <label for="id">Enter User ID:</labela>
+    <input type="text" id="id" name="id" />
+    <input type="submit" value="Submit" />
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const resultDiv = document.getElementById('result');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('id').value;
+        fetch(`/users?id=${id}`)
+        .then((response) => response.text())
+        .then((data) => {
+            resultDiv.innerHTML = `User Info: ${data}`;
+          })
+        .catch((error) => {
+            resultDiv.innerHTML = `Error: ${error.message}`;
+          });
+      });
+    });
+  </script>
+</body>
+</html>
