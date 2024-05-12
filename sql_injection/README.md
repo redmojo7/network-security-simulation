@@ -2,6 +2,11 @@
 
 To run the Server, follow these steps:
 
+### Install npm
+```bash
+sudo apt install npm
+```
+
 ### Install packages, Express.js, SQLite, base-64, and uuid using npm:
 
 ```bash

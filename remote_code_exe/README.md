@@ -2,6 +2,11 @@
 
 To run the Server, follow these steps:
 
+### Install npm
+```bash
+sudo apt install npm
+```
+
 ### Install Express.js using npm:
 
 ```bash
