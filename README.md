@@ -16,14 +16,14 @@ This repository contains scripts, documentation, and configurations for simulati
 1. **Brute Force Attack**
 2. **Denial of Service (DoS)**
 3. **Port Scan**
-4. **Remote Code Execution**
+4. **Command Injection**
 5. **SQL Injection**
 
 ## Intrusion Detection System (IDS) Implementation
 1. **Brute Force Attack**
 2. **Denial of Service (DoS)**
 3. **Port Scan**
-4. **Remote Code Execution**
+4. **Command Injection**
 5. **SQL Injection**
 
 ## Contributing
