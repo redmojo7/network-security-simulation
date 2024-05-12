@@ -65,7 +65,13 @@ sudo ufw deny from 192.168.1.114 to any
 sudp ufw status
 ```
 
-### Checking all active shell
+### Checking All Active Network Connections
+```
+netstat -tunpa | grep ESTABLISHED
+ps -aux | grep bash
 ```
 
+### Kill it 
+```
+kill -9 {pid} {pid} {pid}
 ```
