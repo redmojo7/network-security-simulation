@@ -6,6 +6,16 @@ const fs = require('fs');
 
 const app = express();
 
+// Create a log file
+const logFile = 'log.txt';
+const logStream = fs.createWriteStream(logFile, { flags: 'a' });
+
+// Redirect console.log to the log file
+console.log = function (...args) {
+  logStream.write(`${args.join(' ')}\n`);
+};
+
+
 // Delete the old database file if it exists
 const dbFile = 'vulnerable_db.sqlite';
 if (fs.existsSync(dbFile)) {
@@ -53,6 +63,7 @@ app.get('/', (req, res) => {
 // Create a vulnerable SQL query endpoint
 app.get('/users', (req, res) => {
   const id = req.query.id;
+  console.log(`Url: ${req.url}`);
   if (!id) {
     console.log('No user ID provided');
     res.status(400).send('No user ID provided, please provide a valid uuid.');
