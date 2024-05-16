@@ -63,7 +63,7 @@ app.get('/', (req, res) => {
 // Create a vulnerable SQL query endpoint
 app.get('/users', (req, res) => {
   const id = req.query.id;
-  console.log(`Url: ${req.url}`);
+  console.log(`End User (IP: ${req.connection.remoteAddress}) requested URL: ${req.url}`); 
   if (!id) {
     console.log('No user ID provided');
     res.status(400).send('No user ID provided, please provide a valid uuid.');
