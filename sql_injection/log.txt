@@ -1,0 +1,9 @@
+Deleted old database file: vulnerable_db.sqlite
+Vulnerable web server is running on http://localhost:3000
+Table created successfully
+Deleted old database file: vulnerable_db.sqlite
+Vulnerable web server is running on http://localhost:3000
+Table created successfully
+Deleted old database file: vulnerable_db.sqlite
+Vulnerable web server is running on http://localhost:3000
+Table created successfully

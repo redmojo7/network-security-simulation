@@ -69,7 +69,7 @@ app.get('/users', (req, res) => {
     res.status(400).send('No user ID provided, please provide a valid uuid.');
     return;
   }
-  const query = `SELECT * FROM users WHERE id = ${id}`;
+  const query = `SELECT * FROM users WHERE id = '${id}'`;
   console.log(`Running query: ${query}`);
   db.all(query, (err, rows) => {
     if (err) {
